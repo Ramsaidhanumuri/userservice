@@ -3,6 +3,8 @@ package dev.ramsai.userservice.dtos;
 import java.util.HashSet;
 import java.util.Set;
 
+import dev.ramsai.userservice.models.Role;
+import dev.ramsai.userservice.models.User;
 import lombok.Getter;
 import lombok.Setter;
 
