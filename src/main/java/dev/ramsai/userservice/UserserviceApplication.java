@@ -1,4 +1,4 @@
-package dev.ramsai.productservice;
+package dev.ramsai.userservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
