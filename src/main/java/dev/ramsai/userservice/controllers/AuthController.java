@@ -44,4 +44,5 @@ public class AuthController {
         SessionStatus sessionStatus = authService.validate(request.getToken(), request.getUserId());
 
         return new ResponseEntity<>(sessionStatus, HttpStatus.OK);
+	}
 }
