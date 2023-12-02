@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import dev.ramsai.userservice.dtos.UserDto;
 import dev.ramsai.userservice.models.SessionStatus;
 import dev.ramsai.userservice.models.User;
+import dev.ramsai.userservice.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 
 @Service
@@ -14,6 +15,7 @@ import lombok.AllArgsConstructor;
 public class AuthServiceImpl implements AuthService {
 	
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	private UserRepository userRepository;
 
 	@Override
 	public ResponseEntity<UserDto> login(String email, String password) {
@@ -32,8 +34,10 @@ public class AuthServiceImpl implements AuthService {
 		User user = new User();
 		user.setEmail(email);
 		user.setPassword(bCryptPasswordEncoder.encode(password));
+
+		User savedUser = userRepository.save(user);
 		
-		return null;
+		return UserDto.from(savedUser);
 	}
 
 	@Override
