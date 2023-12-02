@@ -16,7 +16,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @JsonDeserialize(as = User.class)
-public class User {
+public class User extends BaseModel{
 
 	private String email;
     private String password;
