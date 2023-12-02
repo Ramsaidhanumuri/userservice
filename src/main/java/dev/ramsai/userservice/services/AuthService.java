@@ -1,9 +1,9 @@
 package dev.ramsai.userservice.services;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.support.SessionStatus;
 
 import dev.ramsai.userservice.dtos.UserDto;
+import dev.ramsai.userservice.models.SessionStatus;
 
 public interface AuthService {
 
