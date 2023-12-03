@@ -1,5 +1,7 @@
 package dev.ramsai.userservice.services;
 
+import java.util.Optional;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -19,7 +21,19 @@ public class AuthServiceImpl implements AuthService {
 
 	@Override
 	public ResponseEntity<UserDto> login(String email, String password) {
-		// TODO Auto-generated method stub
+		
+		Optional<User> userOptional = userRepository.findByEmail(email);
+		
+		if(userOptional.isEmpty()) {
+			return null;
+		}
+		
+		User user = userOptional.get();
+		
+		if(!bCryptPasswordEncoder.matches(password, user.getPassword())) {
+			throw new RuntimeException("wrong password!!!");
+		}
+		
 		return null;
 	}
 
