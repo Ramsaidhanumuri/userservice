@@ -81,8 +81,18 @@ public class AuthServiceImpl implements AuthService {
 
 	@Override
 	public ResponseEntity<Void> logout(String token, Long userId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Optional<Session> sessionOptional = sessionRepository.findByTokenAndUser_Id(token, userId);
+		
+		if(sessionOptional.isEmpty()) {
+			return null;
+		}
+		
+		Session session = sessionOptional.get();
+		session.setSessionStatus(SessionStatus.ENDED);
+		sessionRepository.save(session);
+		
+		return ResponseEntity.ok().build();
 	}
 
 	@Override
